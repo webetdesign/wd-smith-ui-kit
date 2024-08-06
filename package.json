@@ -1,0 +1,13 @@
+{
+  "name": "wd-media-kit",
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "sites/*"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.4",
+    "vite-plugin-dts": "^3.9.1"
+  }
+}

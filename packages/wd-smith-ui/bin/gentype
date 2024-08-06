@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Vérifier si une URL est passée en paramètre
+if [ -z "$1" ]; then
+  echo "Usage: $0 <url>"
+  exit 1
+fi
+
+URL=$1
+TEMP_FILE="docs.json"
+OUTPUT_FILE="src/wd-media-ui/api/types/openapi.d.ts"
+
+# Récupérer le contenu JSON de l'URL et le stocker dans un fichier temporaire
+curl -s $URL -o $TEMP_FILE
+
+# Vérifier si le fichier temporaire a été créé et n'est pas vide
+if [ ! -s $TEMP_FILE ]; then
+  echo "Erreur: Impossible de récupérer le contenu JSON de l'URL."
+  exit 1
+fi
+echo "Le contenu JSON a été récupéré avec succès et stocké dans $TEMP_FILE."
+
+# Exécuter la commande npx openapicmd typegen
+npx openapicmd typegen $TEMP_FILE > $OUTPUT_FILE
+
+# Vérifier si la commande a réussi
+if [ $? -ne 0 ]; then
+  echo "Erreur: La génération des types a échoué."
+  rm -f $TEMP_FILE
+  exit 1
+fi
+echo "La génération des types a réussi et les types sont stockés dans $OUTPUT_FILE."
+
+# Supprimer le fichier temporaire
+rm -f $TEMP_FILE
+
+# Vérifier si le fichier temporaire a été supprimé
+if [ -f $TEMP_FILE ]; then
+  echo "Erreur: Impossible de supprimer le fichier temporaire $TEMP_FILE."
+  exit 1
+fi
+echo "Le fichier temporaire $TEMP_FILE a été supprimé avec succès."
