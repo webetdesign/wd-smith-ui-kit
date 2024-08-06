@@ -1,5 +1,5 @@
 {
-  "name": "wd-media-kit",
+  "name": "wd-smith-ui",
   "workspaces": {
     "packages": [
       "packages/*",
