@@ -1,5 +1,6 @@
 {
   "name": "wd-smith-ui",
+  "version": "0.0.1",
   "workspaces": {
     "packages": [
       "packages/*",
