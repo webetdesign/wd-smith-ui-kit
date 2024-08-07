@@ -105,7 +105,7 @@ function Information() {
     <>
       <div className="border-y-2 h-20 flex items-center">
         <div className="px-6 flex items-center justify-between w-full">
-          <h1 className="text-ellipsis">{media.label}</h1>
+          <span className="text-ellipsis">{media.label}</span>
           <Button variant="ghost" onClick={handleCloseClick}>
             <FontAwesomeIcon icon={faTimes} className="h-5 w-5 text-gray-500"/>
           </Button>

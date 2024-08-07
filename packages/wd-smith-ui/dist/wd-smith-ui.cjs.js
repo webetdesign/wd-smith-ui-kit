@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./index-BN47AP8o.cjs");exports.Gallery=e.MediaLibrary;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./index-0oy_YdFm.cjs");exports.MediaLibrary=e.MediaLibrary;

@@ -4,10 +4,19 @@ import type {Client} from './types/openapi.d.ts';
 class ApiClient {
   private static instance: Client | null = null;
   private static initializing: Promise<Client> | null = null;
+  private static serverUrl: string | null = null;
 
   private constructor() {}
 
+  public static configure(apiUrl: string): void {
+    ApiClient.serverUrl = apiUrl;
+  }
+
   public static async getInstance(): Promise<Client> {
+    if (!ApiClient.serverUrl) {
+      throw new Error('ApiClient not configured. Please call ApiClient.configure(serverUrl) before using it.');
+    }
+
     if (ApiClient.instance) {
       // console.log('Returning existing instance:', ApiClient.instance);
       return ApiClient.instance;
@@ -17,7 +26,7 @@ class ApiClient {
       // console.log('Initializing new instance...');
       ApiClient.initializing = (async () => {
         const api = new OpenAPIClientAxios({
-          definition: 'https://local.smith.fr/wd-media-api/docs.jsonopenapi',
+          definition: `${this.serverUrl}/wd-media-api/docs.jsonopenapi`,
           transformOperationMethod: (operationMethod, operation) => {
             return (params, body, config) => {
               // ajoute le header Content-Type : application/merge-patch+json pour toutes les requêtes patch
@@ -33,7 +42,7 @@ class ApiClient {
           }
         });
 
-        api.withServer({ url: 'https://local.smith.fr/' });
+        api.withServer({ url: String(this.serverUrl) });
 
         const instance = await api.init<Client>();
         ApiClient.instance = instance;

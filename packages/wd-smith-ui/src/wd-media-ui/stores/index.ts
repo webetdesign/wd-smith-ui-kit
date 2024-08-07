@@ -11,14 +11,10 @@ const store = configureStore({
 });
 
 // Initialisation du Singleton avant d'utiliser le store
-const initializeApp = async () => {
+export const initializeApp = async (serveurUrl: string) => {
+  ApiClient.configure(serveurUrl);
   await ApiClient.getInstance();
 };
-
-initializeApp().then(() => {
-  // L'application est prête, vous pouvez maintenant rendre votre application
-  // Render your React app
-});
 
 export type MediaLibraryDispatch = typeof store.dispatch;
 export type MediaLibraryState = ReturnType<typeof store.getState>;

@@ -1,11 +1,11 @@
-import { Gallery } from 'wd-smith-ui';
+import { MediaLibrary } from 'wd-smith-ui';
 import 'wd-smith-ui/style.css';
 
 function App() {
 
   return (
-    <div>
-      <Gallery/>
+    <div style={{'backgroundColor': 'red'}}>
+      <MediaLibrary serverUrl="https://local.smith.fr" />
     </div>
   )
 }

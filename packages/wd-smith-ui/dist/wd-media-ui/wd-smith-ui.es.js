@@ -1,4 +1,4 @@
-import { M as e } from "../index-CvYNhCfD.js";
+import { M as e } from "../index-UaRrrGmp.js";
 export {
   e as Gallery
 };

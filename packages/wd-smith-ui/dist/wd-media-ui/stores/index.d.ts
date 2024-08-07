@@ -7,6 +7,7 @@ declare const store: import('@reduxjs/toolkit').EnhancedStore<{
         media: import('./slices/mediaSlice').MediaState;
     }, undefined, import('redux').UnknownAction>;
 }>, import('redux').StoreEnhancer]>>;
+export declare const initializeApp: (serveurUrl: string) => Promise<void>;
 export type MediaLibraryDispatch = typeof store.dispatch;
 export type MediaLibraryState = ReturnType<typeof store.getState>;
 export default store;

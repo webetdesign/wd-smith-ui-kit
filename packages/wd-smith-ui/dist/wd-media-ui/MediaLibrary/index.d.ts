@@ -1,4 +1,7 @@
-import { HTMLAttributes } from 'react';
+import { default as React, HTMLAttributes } from 'react';
 
-declare function MediaLibrary({ ...rest }: HTMLAttributes<HTMLElement>): import("react/jsx-runtime").JSX.Element;
+export interface MediaLibraryProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
+    serverUrl: string;
+}
+declare function MediaLibrary({ serverUrl, className, ...rest }: MediaLibraryProps): import("react/jsx-runtime").JSX.Element;
 export default MediaLibrary;
