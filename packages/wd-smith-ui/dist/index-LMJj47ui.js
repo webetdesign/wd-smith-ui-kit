@@ -22236,7 +22236,7 @@ function AT() {
     /* @__PURE__ */ w.jsxs(qf, { children: [
       /* @__PURE__ */ w.jsx(ST, {}),
       /* @__PURE__ */ w.jsx(j_, {}),
-      /* @__PURE__ */ w.jsx("footer", { className: "px-6 h-20 flex items-center justify-end border-t-2", children: /* @__PURE__ */ w.jsx(CT, {}) })
+      /* @__PURE__ */ w.jsx("div", { className: "px-6 h-20 flex items-center justify-end border-t-2", children: /* @__PURE__ */ w.jsx(CT, {}) })
     ] }),
     e && /* @__PURE__ */ w.jsxs(w.Fragment, { children: [
       /* @__PURE__ */ w.jsx(__, { withHandle: !0 }),
