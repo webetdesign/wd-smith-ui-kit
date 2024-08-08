@@ -1,17 +1,22 @@
 import { Components, Paths } from '../../api/types/openapi.d.ts';
 
-export interface MediaState {
-    items: Components.Schemas.Media[];
-    status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null;
-    updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
-    updateError: string | null;
-}
 export interface UpdateMediaFileParams {
     id: number;
     file: File;
 }
-export declare const fetchMediaItems: import('@reduxjs/toolkit').AsyncThunk<Paths.GetMedias.Responses.$200, void, {
+export interface CreateMediaParams {
+    category: string;
+    file: File;
+}
+export interface MediaState {
+    items: Components.Schemas.Media[];
+    status: 'idle' | 'loading' | 'succeeded' | 'failed';
+    error: string | null;
+    view: Paths.GetMedias.Responses.$200['hydra:view'] | null;
+    updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+    updateError: string | null;
+}
+export declare const fetchMediaItems: import('@reduxjs/toolkit').AsyncThunk<Paths.GetMedias.Responses.$200, number | undefined, {
     state?: unknown;
     dispatch?: import('redux-thunk').ThunkDispatch<unknown, unknown, import('redux').UnknownAction> | undefined;
     extra?: unknown;
@@ -32,6 +37,16 @@ export declare const updateMedia: import('@reduxjs/toolkit').AsyncThunk<Componen
     rejectedMeta?: unknown;
 }>;
 export declare const updateMediaFile: import('@reduxjs/toolkit').AsyncThunk<Components.Schemas.Media, UpdateMediaFileParams, {
+    state?: unknown;
+    dispatch?: import('redux-thunk').ThunkDispatch<unknown, unknown, import('redux').UnknownAction> | undefined;
+    extra?: unknown;
+    rejectValue?: unknown;
+    serializedErrorType?: unknown;
+    pendingMeta?: unknown;
+    fulfilledMeta?: unknown;
+    rejectedMeta?: unknown;
+}>;
+export declare const createMedia: import('@reduxjs/toolkit').AsyncThunk<Components.Schemas.Media, CreateMediaParams, {
     state?: unknown;
     dispatch?: import('redux-thunk').ThunkDispatch<unknown, unknown, import('redux').UnknownAction> | undefined;
     extra?: unknown;

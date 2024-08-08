@@ -4,7 +4,7 @@ import 'wd-smith-ui/style.css';
 function App() {
 
   return (
-    <div style={{'backgroundColor': 'red'}}>
+    <div style={{'height': '100vh'}}>
       <MediaLibrary serverUrl="https://local.smith.fr" />
     </div>
   )

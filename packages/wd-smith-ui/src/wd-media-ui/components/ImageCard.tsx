@@ -7,10 +7,12 @@ import {MediaLibraryDispatch, MediaLibraryState} from "@/wd-media-ui/stores";
 import {cn} from "@/lib/utils.ts";
 
 interface ImageCardProps {
-  media: Components.Schemas.Media
+  className?: string;
+  media: Components.Schemas.Media,
+  key?: number | undefined
 }
 
-function ImageCard({ media }: ImageCardProps) {
+function ImageCard({ className, media }: ImageCardProps) {
   const dispatch = useDispatch<MediaLibraryDispatch>();
   const selectedMedia = useSelector((state: MediaLibraryState) => state.main.selectedMedia);
 
@@ -19,7 +21,7 @@ function ImageCard({ media }: ImageCardProps) {
   }
 
   return (
-    <Card className={cn({ 'w-[250px]': true, 'border-primary': media.id === selectedMedia?.id })} onClick={handleCardClick}>
+    <Card className={cn(className, { 'border-primary': media.id === selectedMedia?.id })} onClick={handleCardClick}>
       <CardHeader className="p-0 pb-6">
         <AspectRatio ratio={4 / 3} className="rounded-t-lg overflow-hidden bg-checkerboard">
           {media.picture && (

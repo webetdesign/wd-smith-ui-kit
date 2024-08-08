@@ -25,10 +25,12 @@ function Gallery() {
   }
 
   return (
-    <div className="p-6 flex gap-3 flex-wrap">
-      {items.length > 0 && items.map((media: Components.Schemas.Media) =>
-        <ImageCard key={media.id} media={media}></ImageCard>
-      )}
+    <div className="p-6 h-[calc(100%-10rem)] overflow-y-auto">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,2fr))] gap-2">
+        {items.length > 0 && items.map((media: Components.Schemas.Media) =>
+          <ImageCard className={'aspect-[124/129]'} key={media.id} media={media}></ImageCard>
+        )}
+      </div>
     </div>
   )
 }

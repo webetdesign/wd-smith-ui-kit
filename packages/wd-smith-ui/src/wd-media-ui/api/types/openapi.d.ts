@@ -152,7 +152,40 @@ declare namespace Paths {
             page?: Parameters.Page;
         }
         namespace Responses {
-            export type $200 = /*  */ Components.Schemas.MediaRead[];
+            export interface $200 {
+                "hydra:member": /*  */ Components.Schemas.MediaJsonldRead[];
+                "hydra:totalItems"?: number;
+                /**
+                 * example:
+                 * {
+                 *   "@id": "string",
+                 *   "type": "string",
+                 *   "hydra:first": "string",
+                 *   "hydra:last": "string",
+                 *   "hydra:previous": "string",
+                 *   "hydra:next": "string"
+                 * }
+                 */
+                "hydra:view"?: {
+                    "@id"?: string; // iri-reference
+                    "@type"?: string;
+                    "hydra:first"?: string; // iri-reference
+                    "hydra:last"?: string; // iri-reference
+                    "hydra:previous"?: string; // iri-reference
+                    "hydra:next"?: string; // iri-reference
+                };
+                "hydra:search"?: {
+                    "@type"?: string;
+                    "hydra:template"?: string;
+                    "hydra:variableRepresentation"?: string;
+                    "hydra:mapping"?: {
+                        "@type"?: string;
+                        variable?: string;
+                        property?: string | null;
+                        required?: boolean;
+                    }[];
+                };
+            }
         }
     }
     namespace PatchMedia {
@@ -192,7 +225,10 @@ declare namespace Paths {
         }
     }
     namespace PostMedia {
-        export type RequestBody = /*  */ Components.Schemas.Media;
+        export interface RequestBody {
+            category?: string;
+            file?: string; // binary
+        }
         namespace Responses {
             export type $201 = /*  */ Components.Schemas.MediaRead;
             export interface $400 {

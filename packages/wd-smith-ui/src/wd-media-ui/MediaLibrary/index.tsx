@@ -11,7 +11,7 @@ export interface MediaLibraryProps extends React.HTMLProps<HTMLAttributes<HTMLDi
 function MediaLibrary({ serverUrl, className, ...rest }: MediaLibraryProps) {
   const [initialized, setInitialized] = useState(false);
 
-  className = cn("bg-background", className);
+  className = cn("bg-background h-full", className);
 
   useEffect(() => {
     const init = async () => {

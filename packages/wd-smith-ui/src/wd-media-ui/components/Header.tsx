@@ -13,12 +13,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import Upload from "@/wd-media-ui/components/Upload.tsx";
 
 function Header() {
 
   return (
     <div className="border-y-2 h-20 flex items-center">
-      <div className="px-6">
+      <div className="px-6 w-full flex items-center justify-between">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -48,6 +49,10 @@ function Header() {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
+
+        <div>
+          <Upload/>
+        </div>
       </div>
     </div>
   )
