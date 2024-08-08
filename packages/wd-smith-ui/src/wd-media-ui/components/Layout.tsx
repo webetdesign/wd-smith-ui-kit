@@ -15,9 +15,9 @@ function Layout() {
       <ResizablePanel>
         <Header/>
         <Gallery/>
-        <footer className="px-6 h-20 flex items-center justify-end border-t-2">
+        <div className="px-6 h-20 flex items-center justify-end border-t-2">
           <PagerButton/>
-        </footer>
+        </div>
       </ResizablePanel>
       {selectedMedia && (
         <>
