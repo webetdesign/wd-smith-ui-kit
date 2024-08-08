@@ -1,0 +1,18 @@
+import { default as React, HTMLAttributes } from 'react';
+import { Components } from '../api/types/openapi';
+
+export interface MediaPickerProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
+    serverUrl: string;
+    onPickedMedia?: (value: number | null) => void;
+}
+type MediaPickerAppContextType = {
+    onPickedMedia?: (value: number | null) => void;
+    isDialogOpen: boolean;
+    setIsDialogOpen: (value: boolean) => void;
+    selectedMedia: Components.Schemas.Media | null;
+    setSelectedMedia: (value: Components.Schemas.Media | null) => void;
+};
+export declare const MediaPickerAppContext: React.Context<MediaPickerAppContextType | undefined>;
+export declare const usePickerContext: () => MediaPickerAppContextType;
+declare function MediaPickerApp({ serverUrl, className, onPickedMedia }: MediaPickerProps): import("react/jsx-runtime").JSX.Element;
+export default MediaPickerApp;

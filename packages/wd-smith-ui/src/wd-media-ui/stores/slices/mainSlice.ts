@@ -1,12 +1,14 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import type { Components } from '@/wd-media-ui/api/types/openapi.d.ts';
+import type {Components} from '@/wd-media-ui/api/types/openapi.d.ts';
 
 export interface MainState {
-  selectedMedia: Components.Schemas.Media | null
+  currentMedia: Components.Schemas.Media | null
+  picker: boolean,
 }
 
 const initialState: MainState = {
-  selectedMedia: null,
+  currentMedia: null,
+  picker: false,
 };
 
 
@@ -14,11 +16,18 @@ const mainSlice = createSlice({
   name: 'main',
   initialState,
   reducers: {
-    setSelectedMedia: (state, action: PayloadAction<Components.Schemas.Media|null>) => {
-      state.selectedMedia = action.payload;
+    setCurrentMedia: (state, action: PayloadAction<Components.Schemas.Media | null>) => {
+      state.currentMedia = action.payload;
     },
+    setPicker: (state, action: PayloadAction<boolean>) => {
+      state.picker = action.payload;
+    }
   }
 });
 
-export const {setSelectedMedia} = mainSlice.actions;
+export const {
+               setCurrentMedia,
+               setPicker,
+             } = mainSlice.actions;
+
 export default mainSlice.reducer;

@@ -1,14 +1,14 @@
 import React, {HTMLAttributes, useEffect, useState} from "react";
 import {Provider} from 'react-redux';
 import store, {initializeApp} from '@/wd-media-ui/stores';
-import Layout from "@/wd-media-ui/components/Layout.tsx";
 import {cn} from "@/lib/utils.ts";
+import MediaLibrary from "@/wd-media-ui/MediaLibrary/MediaLibrary.tsx";
 
 export interface MediaLibraryProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
   serverUrl: string;
 }
 
-function MediaLibrary({ serverUrl, className, ...rest }: MediaLibraryProps) {
+function MediaLibraryApp({ serverUrl, className }: MediaLibraryProps) {
   const [initialized, setInitialized] = useState(false);
 
   className = cn("bg-background h-full", className);
@@ -18,7 +18,7 @@ function MediaLibrary({ serverUrl, className, ...rest }: MediaLibraryProps) {
       try {
         await initializeApp(serverUrl);
         setInitialized(true);
-      } catch (error) {
+      } catch ( error ) {
         console.error("Failed to initialize the app:", error);
       }
     };
@@ -30,12 +30,10 @@ function MediaLibrary({ serverUrl, className, ...rest }: MediaLibraryProps) {
   }
 
   return (
-    <div className={className} {...rest as HTMLAttributes<HTMLDivElement>}>
-      <Provider store={store}>
-        <Layout/>
-      </Provider>
-    </div>
+    <Provider store={store}>
+      <MediaLibrary></MediaLibrary>
+    </Provider>
   )
 }
 
-export default MediaLibrary;
+export default MediaLibraryApp;

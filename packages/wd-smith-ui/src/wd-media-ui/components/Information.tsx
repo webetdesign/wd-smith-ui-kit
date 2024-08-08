@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {MediaLibraryDispatch, MediaLibraryState} from "@/wd-media-ui/stores";
 import {Button} from "@/components/ui/button.tsx";
-import {setSelectedMedia} from "@/wd-media-ui/stores/slices/mainSlice.ts";
+import {setCurrentMedia} from "@/wd-media-ui/stores/slices/mainSlice.ts";
 import {updateMedia, updateMediaFile, UpdateMediaFileParams} from "@/wd-media-ui/stores/slices/mediaSlice.ts";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
@@ -34,7 +34,7 @@ type FormData = z.infer<typeof schema>
 
 function Information() {
   // const { updateStatus } = useSelector((state: MediaLibraryState) => state.media);
-  const media = useSelector((state: MediaLibraryState) => state.main.selectedMedia);
+  const media = useSelector((state: MediaLibraryState) => state.main.currentMedia);
   if (media === null) {
     return (
       <p>Pas de media </p>
@@ -92,17 +92,17 @@ function Information() {
       updatedMedia = await dispatch(updateMediaFile(mediaFileData));
     }
 
-    dispatch(setSelectedMedia(updatedMedia.payload as Components.Schemas.Media))
+    dispatch(setCurrentMedia(updatedMedia.payload as Components.Schemas.Media))
 
   }
 
 
   const handleCloseClick = () => {
-    dispatch(setSelectedMedia(null));
+    dispatch(setCurrentMedia(null));
   };
 
   return (
-    <>
+    <div className="h-full">
       <div className="border-y-2 h-20 flex items-center">
         <div className="px-6 flex items-center justify-between w-full">
           <span className="text-ellipsis">{media.label}</span>
@@ -111,7 +111,7 @@ function Information() {
           </Button>
         </div>
       </div>
-      <div className="px-6">
+      <div className="px-6 pb-6 h-[calc(100%-5rem)] overflow-y-auto">
         <div className="my-3 bg-checkerboard flex justify-center">
           {media.picture && (
             <img src={String(media.thumbnail)} alt={String(media.alt)} className=""/>
@@ -219,7 +219,7 @@ function Information() {
           </Form>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

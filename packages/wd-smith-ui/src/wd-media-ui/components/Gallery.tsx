@@ -1,4 +1,4 @@
-import ImageCard from "@/wd-media-ui/components/ImageCard.tsx";
+import GalleryMediaCard from "@/wd-media-ui/components/GalleryMediaCard.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {MediaLibraryDispatch, MediaLibraryState} from '@/wd-media-ui/stores';
@@ -25,10 +25,10 @@ function Gallery() {
   }
 
   return (
-    <div className="p-6 h-[calc(100%-10rem)] overflow-y-auto">
+    <div className="p-3 h-[calc(100%-10rem)] overflow-y-auto">
       <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,2fr))] gap-2">
         {items.length > 0 && items.map((media: Components.Schemas.Media) =>
-          <ImageCard className={'aspect-[124/129]'} key={media.id} media={media}></ImageCard>
+          <GalleryMediaCard className={'aspect-[124/129]'} key={media.id} media={media}></GalleryMediaCard>
         )}
       </div>
     </div>

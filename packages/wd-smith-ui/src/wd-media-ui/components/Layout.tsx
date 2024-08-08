@@ -4,22 +4,20 @@ import Information from "@/wd-media-ui/components/Information.tsx";
 import {useSelector} from "react-redux";
 import {MediaLibraryState} from "@/wd-media-ui/stores";
 import Header from "@/wd-media-ui/components/Header.tsx";
-import {PagerButton} from "@/wd-media-ui/components/Pagination.tsx";
+import Footer from "@/wd-media-ui/components/Footer.tsx";
 
 
 function Layout() {
-  const selectedMedia = useSelector((state: MediaLibraryState) => state.main.selectedMedia);
+  const currentMedia = useSelector((state: MediaLibraryState) => state.main.currentMedia);
 
   return (
     <ResizablePanelGroup className="overflow-y-auto" direction="horizontal">
       <ResizablePanel>
         <Header/>
         <Gallery/>
-        <div className="px-6 h-20 flex items-center justify-end border-t-2">
-          <PagerButton/>
-        </div>
+        <Footer/>
       </ResizablePanel>
-      {selectedMedia && (
+      {currentMedia && (
         <>
           <ResizableHandle withHandle/>
           <ResizablePanel minSize={20} maxSize={40} defaultSize={20}>

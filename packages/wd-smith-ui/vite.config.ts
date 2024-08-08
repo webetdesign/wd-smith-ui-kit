@@ -12,14 +12,15 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      "#": path.resolve(__dirname, "./public"),
       "@": path.resolve(__dirname, "./src"),
     }
   },
   build: {
     lib: {
       entry: {
-        'wd-media-ui': path.resolve(__dirname, './src/wd-media-ui'),
-        '': path.resolve(__dirname, 'src/index.tsx'),
+        // 'wd-media-ui': path.resolve(__dirname, './src/wd-media-ui'),
+        '': path.resolve(__dirname, 'src/index.ts'),
       },
       name: 'wd-smith-ui',
       formats: ['es', 'cjs'],
