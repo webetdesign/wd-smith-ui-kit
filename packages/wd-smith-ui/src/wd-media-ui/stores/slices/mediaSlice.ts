@@ -42,6 +42,17 @@ export const fetchMediaItems = createAsyncThunk(
     return mediaResponse.data;
   });
 
+export const mediaItemQuery = async (id: number | string) => {
+  const client = await ApiClient.getInstance();
+  const mediaResponse = await client.getMedia({ id: String(id) }, null, {});
+  return mediaResponse.data;
+};
+
+export const fetchMediaItem = createAsyncThunk(
+  'fetchOne',
+  mediaItemQuery
+);
+
 export const updateMedia = createAsyncThunk<Components.Schemas.Media, Components.Schemas.Media>(
   'patch',
   async (media: Components.Schemas.Media) => {

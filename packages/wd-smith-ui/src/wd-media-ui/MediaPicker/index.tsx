@@ -4,12 +4,14 @@ import store, {initializeApp} from '@/wd-media-ui/stores';
 import {cn} from "@/lib/utils.ts";
 import MediaPicker from "@/wd-media-ui/MediaPicker/MediaPicker.tsx";
 import {Components} from "@/wd-media-ui/api/types/openapi";
+import { mediaItemQuery} from "@/wd-media-ui/stores/slices/mediaSlice.ts";
 
 
 export interface MediaPickerProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
   serverUrl: string;
   dialogContainer: HTMLElement
-  onPickedMedia?: (value: number | null) => void;
+  onPickedMedia: (value: number | null) => void;
+  value?: number | undefined;
 }
 
 type MediaPickerAppContextType = {
@@ -20,7 +22,7 @@ type MediaPickerAppContextType = {
   selectedMedia: Components.Schemas.Media | null;
   setSelectedMedia: (value: Components.Schemas.Media | null) => void;
 };
-export const MediaPickerAppContext = createContext<MediaPickerAppContextType|undefined>(undefined);
+export const MediaPickerAppContext = createContext<MediaPickerAppContextType | undefined>(undefined);
 
 export const usePickerContext = () => {
   const context = useContext(MediaPickerAppContext);
@@ -31,8 +33,8 @@ export const usePickerContext = () => {
 };
 
 
-
-function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer }: MediaPickerProps) {
+function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer, value }: MediaPickerProps) {
+  // Note : on peut pas dispatch dans ce composant
   const [initialized, setInitialized] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<Components.Schemas.Media | null>(null);
@@ -51,8 +53,21 @@ function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer }
     init();
   }, [serverUrl]);
 
+  useEffect(() => {
+    const fetch = async (value: number | string) => {
+      const mediaResponse = await mediaItemQuery(value);
+      setSelectedMedia(mediaResponse)
+    };
+    if (initialized && value !== undefined) {
+      fetch(value);
+    }
+  }, [initialized, value]);
+
   if (!initialized) {
     return <div className={className}>Initialisation ...</div>; // Vous pouvez personnaliser ceci
+  }
+
+  if (value !== undefined) {
   }
 
   return (

@@ -32,7 +32,7 @@ function TestPicker() {
 
   return (
     <div className="w-[200px]">
-      <MediaPickerApp dialogContainer={container} onPickedMedia={test} serverUrl="https://local.smith.fr"/>
+      <MediaPickerApp value={35} dialogContainer={container} onPickedMedia={test} serverUrl="https://local.smith.fr"/>
     </div>
   )
 }

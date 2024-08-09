@@ -15,15 +15,13 @@ function Footer() {
   try {
     const { setIsDialogOpen, setSelectedMedia, onPickedMedia} = usePickerContext();
     handlePickClick = () => {
-      console.log('handlePickClick');
       setSelectedMedia(currentMedia)
       if (onPickedMedia) {
         if (currentMedia !== null && currentMedia !== undefined) {
           onPickedMedia(currentMedia.id !== undefined ? currentMedia.id : null);
-          setIsDialogOpen(false);
-          console.log('foo');
         }
       }
+      setIsDialogOpen(false);
     }
   } catch (error) {}
 

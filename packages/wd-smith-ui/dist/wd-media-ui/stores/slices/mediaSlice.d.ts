@@ -26,6 +26,17 @@ export declare const fetchMediaItems: import('@reduxjs/toolkit').AsyncThunk<Path
     fulfilledMeta?: unknown;
     rejectedMeta?: unknown;
 }>;
+export declare const mediaItemQuery: (id: number | string) => Promise<Components.Schemas.MediaRead>;
+export declare const fetchMediaItem: import('@reduxjs/toolkit').AsyncThunk<Components.Schemas.MediaRead, string | number, {
+    state?: unknown;
+    dispatch?: import('redux-thunk').ThunkDispatch<unknown, unknown, import('redux').UnknownAction> | undefined;
+    extra?: unknown;
+    rejectValue?: unknown;
+    serializedErrorType?: unknown;
+    pendingMeta?: unknown;
+    fulfilledMeta?: unknown;
+    rejectedMeta?: unknown;
+}>;
 export declare const updateMedia: import('@reduxjs/toolkit').AsyncThunk<Components.Schemas.Media, Components.Schemas.Media, {
     state?: unknown;
     dispatch?: import('redux-thunk').ThunkDispatch<unknown, unknown, import('redux').UnknownAction> | undefined;

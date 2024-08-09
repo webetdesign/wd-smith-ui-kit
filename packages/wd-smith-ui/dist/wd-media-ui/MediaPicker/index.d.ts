@@ -4,7 +4,8 @@ import { Components } from '../api/types/openapi';
 export interface MediaPickerProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
     serverUrl: string;
     dialogContainer: HTMLElement;
-    onPickedMedia?: (value: number | null) => void;
+    onPickedMedia: (value: number | null) => void;
+    value?: number | undefined;
 }
 type MediaPickerAppContextType = {
     dialogContainer: HTMLElement;
@@ -16,5 +17,5 @@ type MediaPickerAppContextType = {
 };
 export declare const MediaPickerAppContext: React.Context<MediaPickerAppContextType | undefined>;
 export declare const usePickerContext: () => MediaPickerAppContextType;
-declare function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer }: MediaPickerProps): import("react/jsx-runtime").JSX.Element;
+declare function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer, value }: MediaPickerProps): import("react/jsx-runtime").JSX.Element;
 export default MediaPickerApp;
