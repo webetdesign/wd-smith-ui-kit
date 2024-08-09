@@ -1,11 +1,11 @@
-import { MediaLibraryApp } from 'wd-smith-ui';
+import {MediaLibraryApp} from 'wd-smith-ui';
 // import { MediaPickerApp } from 'wd-smith-ui';
 import 'wd-smith-ui/style.css';
 
 function App() {
 
   return (
-    <div style={{'height': '100vh'}}>
+    <div className="media-app-root" style={{ 'height': '100vh' }}>
       <TestLibrary/>
       {/*<TestPicker/>*/}
     </div>
@@ -16,7 +16,7 @@ export default App
 
 function TestLibrary() {
   return (
-    <MediaLibraryApp serverUrl="https://local.smith.fr" />
+    <MediaLibraryApp className="media-app-root" serverUrl="https://local.smith.fr"/>
   )
 }
 
