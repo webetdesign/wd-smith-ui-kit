@@ -4,23 +4,29 @@ import {fetchMediaItems} from "@/wd-media-ui/stores/slices/mediaSlice.ts";
 import {Button} from "@/components/ui/button.tsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronRight, faChevronLeft} from "@fortawesome/free-solid-svg-icons";
-import {useContext} from "react";
-import {MediaPickerAppContext, usePickerContext} from "@/wd-media-ui/MediaPicker";
+import {usePickerContext} from "@/wd-media-ui/MediaPicker";
 
 function Footer() {
   const dispatch = useDispatch<MediaLibraryDispatch>();
   const view = useSelector((state: MediaLibraryState) => state.media.view);
   const picker = useSelector((state: MediaLibraryState) => state.main.picker);
   const currentMedia = useSelector((state: MediaLibraryState) => state.main.currentMedia);
-  const context = useContext(MediaPickerAppContext);
-  const { setIsDialogOpen, setSelectedMedia} = usePickerContext();
-
-
-  if (!context) {
-    throw new Error('ChildComponent must be used within a RootComponent');
+  let handlePickClick = () => {};
+  try {
+    const { setIsDialogOpen, setSelectedMedia, onPickedMedia} = usePickerContext();
+    handlePickClick = () => {
+      setSelectedMedia(currentMedia)
+      if (onPickedMedia) {
+        if (currentMedia !== null && currentMedia !== undefined) {
+          onPickedMedia(currentMedia.id !== undefined ? currentMedia.id : null);
+          setIsDialogOpen(false);
+        }
+      }
+    }
   }
+  catch (error) {
 
-  const { onPickedMedia } = context;
+  }
 
   if (!view) return null;
 
@@ -34,15 +40,6 @@ function Footer() {
   }
   const handleNextClick = () => {
     gotToPage(view["hydra:next"]);
-  }
-  const handlePickClick = () => {
-    setSelectedMedia(currentMedia)
-    if (onPickedMedia) {
-      if (currentMedia !== null && currentMedia !== undefined) {
-        onPickedMedia(currentMedia.id !== undefined ? currentMedia.id : null);
-        setIsDialogOpen(false);
-      }
-    }
   }
 
   const gotToPage = (url: string | undefined) => {
