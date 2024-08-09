@@ -29,7 +29,7 @@ function MediaPicker({ className }: MediaPickerProps) {
       <PickerMediaCard className={className}></PickerMediaCard>
 
       <Dialog open={isDialogOpen} onOpenChange={(value) => setIsDialogOpen(value)}>
-        <DialogContent container={dialogContainer} className="p-0 h-[75vh] w-[75vw] max-h-none max-w-none">
+        <DialogContent container={dialogContainer} className="p-0 z-[900] h-[75vh] w-[75vw] max-h-none max-w-none">
           <DialogHeader className="pt-6 px-6">
             <DialogTitle>Médiathèque</DialogTitle>
             <DialogDescription>

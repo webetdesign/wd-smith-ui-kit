@@ -22545,7 +22545,7 @@ function OT({ className: e }) {
   const { isDialogOpen: n, setIsDialogOpen: r, dialogContainer: i } = $u();
   return /* @__PURE__ */ v.jsxs(v.Fragment, { children: [
     /* @__PURE__ */ v.jsx(AT, { className: e }),
-    /* @__PURE__ */ v.jsx(ST, { open: n, onOpenChange: (o) => r(o), children: /* @__PURE__ */ v.jsxs(Qv, { container: i, className: "p-0 h-[75vh] w-[75vw] max-h-none max-w-none", children: [
+    /* @__PURE__ */ v.jsx(ST, { open: n, onOpenChange: (o) => r(o), children: /* @__PURE__ */ v.jsxs(Qv, { container: i, className: "p-0 z-[900] h-[75vh] w-[75vw] max-h-none max-w-none", children: [
       /* @__PURE__ */ v.jsxs(eb, { className: "pt-6 px-6", children: [
         /* @__PURE__ */ v.jsx(tb, { children: "Médiathèque" }),
         /* @__PURE__ */ v.jsx(nb, { children: "Sélectionnez ou ajoutez un nouveau média." })
@@ -22598,12 +22598,12 @@ function RT() {
     u !== null && e(ti(u));
   };
   return /* @__PURE__ */ v.jsx("div", { className: "px-6 h-20 flex items-center justify-end border-t-2", children: /* @__PURE__ */ v.jsxs("div", { className: "flex gap-2", children: [
-    n && /* @__PURE__ */ v.jsx(xr, { onClick: i, disabled: r === null, children: "Valider" }),
-    /* @__PURE__ */ v.jsxs(xr, { variant: "secondary", onClick: a, disabled: t["hydra:previous"] === void 0, children: [
+    n && /* @__PURE__ */ v.jsx(xr, { type: "button", onClick: i, disabled: r === null, children: "Valider" }),
+    /* @__PURE__ */ v.jsxs(xr, { type: "button", variant: "secondary", onClick: a, disabled: t["hydra:previous"] === void 0, children: [
       /* @__PURE__ */ v.jsx(Tr, { icon: LC, className: "pr-2" }),
       "Précédent"
     ] }),
-    /* @__PURE__ */ v.jsxs(xr, { variant: "secondary", onClick: s, disabled: t["hydra:next"] === void 0, children: [
+    /* @__PURE__ */ v.jsxs(xr, { type: "button", variant: "secondary", onClick: s, disabled: t["hydra:next"] === void 0, children: [
       "Suivant",
       /* @__PURE__ */ v.jsx(Tr, { icon: zC, className: "pl-2" })
     ] })

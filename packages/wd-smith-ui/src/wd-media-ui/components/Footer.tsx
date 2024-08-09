@@ -58,15 +58,15 @@ function Footer() {
     <div className="px-6 h-20 flex items-center justify-end border-t-2">
       <div className="flex gap-2">
         {picker && (
-          <Button onClick={handlePickClick} disabled={currentMedia === null}>
+          <Button type="button" onClick={handlePickClick} disabled={currentMedia === null}>
             Valider
           </Button>
         )}
-        <Button variant="secondary" onClick={handlePreviousClick} disabled={view["hydra:previous"] === undefined}>
+        <Button type="button" variant="secondary" onClick={handlePreviousClick} disabled={view["hydra:previous"] === undefined}>
           <FontAwesomeIcon icon={faChevronLeft} className="pr-2"/>
           Précédent
         </Button>
-        <Button variant="secondary" onClick={handleNextClick} disabled={view["hydra:next"] === undefined}>
+        <Button type="button" variant="secondary" onClick={handleNextClick} disabled={view["hydra:next"] === undefined}>
           Suivant
           <FontAwesomeIcon icon={faChevronRight} className="pl-2"/>
         </Button>
