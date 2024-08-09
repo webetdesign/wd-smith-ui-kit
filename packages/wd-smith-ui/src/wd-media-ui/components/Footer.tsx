@@ -15,6 +15,7 @@ function Footer() {
   try {
     const { setIsDialogOpen, setSelectedMedia, onPickedMedia} = usePickerContext();
     handlePickClick = () => {
+      console.log('handlePickClick');
       setSelectedMedia(currentMedia)
       if (onPickedMedia) {
         if (currentMedia !== null && currentMedia !== undefined) {
@@ -23,10 +24,8 @@ function Footer() {
         }
       }
     }
-  }
-  catch (error) {
-
-  }
+    console.log('ok');
+  } catch (error) {}
 
   if (!view) return null;
 

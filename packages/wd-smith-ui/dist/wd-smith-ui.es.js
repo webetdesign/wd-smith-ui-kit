@@ -22201,7 +22201,7 @@ function uT() {
     r.current && r.current.click();
   };
   return /* @__PURE__ */ v.jsxs(v.Fragment, { children: [
-    /* @__PURE__ */ v.jsx(xr, { onClick: i, children: /* @__PURE__ */ v.jsx(Tr, { icon: hg }) }),
+    /* @__PURE__ */ v.jsx(xr, { type: "button", onClick: i, children: /* @__PURE__ */ v.jsx(Tr, { icon: hg }) }),
     /* @__PURE__ */ v.jsx(
       Xi,
       {
@@ -22579,8 +22579,8 @@ function RT() {
   try {
     const { setIsDialogOpen: l, setSelectedMedia: u, onPickedMedia: d } = $u();
     i = () => {
-      u(r), d && r != null && (d(r.id !== void 0 ? r.id : null), l(!1));
-    };
+      console.log("handlePickClick"), u(r), d && r != null && (d(r.id !== void 0 ? r.id : null), l(!1));
+    }, console.log("ok");
   } catch {
   }
   if (!t) return null;

@@ -43,7 +43,7 @@ function Upload() {
 
   return (
     <>
-      <Button onClick={handleUploadClick}>
+      <Button type="button" onClick={handleUploadClick}>
         <FontAwesomeIcon icon={faUpload}/>
       </Button>
 
