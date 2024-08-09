@@ -21,14 +21,14 @@ function MediaPicker({ className }: MediaPickerProps) {
   const dispatch = useDispatch<MediaLibraryDispatch>();
   dispatch(setPicker(true));
 
-  const { isDialogOpen, setIsDialogOpen, dialogContainer } = usePickerContext();
+  const { isDialogOpen, dialogContainer } = usePickerContext();
 
 
   return (
     <>
       <PickerMediaCard className={className}></PickerMediaCard>
 
-      <Dialog open={isDialogOpen} onOpenChange={(value) => setIsDialogOpen(value)}>
+      <Dialog open={isDialogOpen}>
         <DialogContent container={dialogContainer} className="p-0 z-[900] h-[75vh] w-[75vw] max-h-none max-w-none">
           <DialogHeader className="pt-6 px-6">
             <DialogTitle>Médiathèque</DialogTitle>
