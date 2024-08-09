@@ -24,7 +24,6 @@ function Footer() {
         }
       }
     }
-    console.log('ok');
   } catch (error) {}
 
   if (!view) return null;

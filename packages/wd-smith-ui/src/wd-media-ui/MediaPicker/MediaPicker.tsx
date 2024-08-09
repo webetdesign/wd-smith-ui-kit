@@ -1,4 +1,4 @@
-import React, {HTMLAttributes} from "react";
+import React, {HTMLAttributes, useEffect} from "react";
 import MediaLibrary from "@/wd-media-ui/MediaLibrary/MediaLibrary.tsx";
 
 import {
@@ -23,6 +23,9 @@ function MediaPicker({ className }: MediaPickerProps) {
 
   const { isDialogOpen, dialogContainer } = usePickerContext();
 
+  useEffect(() => {
+    console.log(isDialogOpen);
+  }, [isDialogOpen])
 
   return (
     <>
