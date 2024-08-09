@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  important: '#root',
+  important: '.wd-media-ui-root',
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',

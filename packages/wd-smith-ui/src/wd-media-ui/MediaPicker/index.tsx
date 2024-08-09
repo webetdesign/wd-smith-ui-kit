@@ -8,10 +8,12 @@ import {Components} from "@/wd-media-ui/api/types/openapi";
 
 export interface MediaPickerProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
   serverUrl: string;
+  dialogContainer: HTMLElement
   onPickedMedia?: (value: number | null) => void;
 }
 
 type MediaPickerAppContextType = {
+  dialogContainer: HTMLElement
   onPickedMedia?: (value: number | null) => void;
   isDialogOpen: boolean;
   setIsDialogOpen: (value: boolean) => void;
@@ -30,7 +32,7 @@ export const usePickerContext = () => {
 
 
 
-function MediaPickerApp({ serverUrl, className, onPickedMedia }: MediaPickerProps) {
+function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer }: MediaPickerProps) {
   const [initialized, setInitialized] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<Components.Schemas.Media | null>(null);
@@ -54,7 +56,7 @@ function MediaPickerApp({ serverUrl, className, onPickedMedia }: MediaPickerProp
   }
 
   return (
-    <MediaPickerAppContext.Provider value={{ onPickedMedia, isDialogOpen, setIsDialogOpen, selectedMedia, setSelectedMedia }}>
+    <MediaPickerAppContext.Provider value={{ onPickedMedia, isDialogOpen, setIsDialogOpen, selectedMedia, setSelectedMedia, dialogContainer }}>
       <Provider store={store}>
         <MediaPicker/>
       </Provider>

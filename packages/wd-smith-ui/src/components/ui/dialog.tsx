@@ -27,11 +27,12 @@ const DialogOverlay = React.forwardRef<
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
+//This component is overridden to pass container to DialogPortal
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <DialogPortal>
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & { container?: HTMLElement | null }
+>(({ className, children, container, ...props }, ref) => (
+  <DialogPortal container={container}>
     <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}

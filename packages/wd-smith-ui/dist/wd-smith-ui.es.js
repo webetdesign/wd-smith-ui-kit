@@ -22476,17 +22476,17 @@ const ST = wT, CT = _T, Jv = x.forwardRef(({ className: e, ...t }, n) => /* @__P
   }
 ));
 Jv.displayName = Gv.displayName;
-const Qv = x.forwardRef(({ className: e, children: t, ...n }, r) => /* @__PURE__ */ v.jsxs(CT, { children: [
+const Qv = x.forwardRef(({ className: e, children: t, container: n, ...r }, i) => /* @__PURE__ */ v.jsxs(CT, { container: n, children: [
   /* @__PURE__ */ v.jsx(Jv, {}),
   /* @__PURE__ */ v.jsxs(
     Zv,
     {
-      ref: r,
+      ref: i,
       className: $e(
         "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-slate-200 bg-white p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg dark:border-slate-800 dark:bg-slate-950",
         e
       ),
-      ...n,
+      ...r,
       children: [
         t,
         /* @__PURE__ */ v.jsxs(ET, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-slate-100 data-[state=open]:text-slate-500 dark:ring-offset-slate-950 dark:focus:ring-slate-300 dark:data-[state=open]:bg-slate-800 dark:data-[state=open]:text-slate-400", children: [
@@ -22542,10 +22542,10 @@ function AT({ className: e }) {
 }
 function OT({ className: e }) {
   yi()(Hw(!0));
-  const { isDialogOpen: n } = $u();
+  const { isDialogOpen: n, setIsDialogOpen: r, dialogContainer: i } = $u();
   return /* @__PURE__ */ v.jsxs(v.Fragment, { children: [
     /* @__PURE__ */ v.jsx(AT, { className: e }),
-    /* @__PURE__ */ v.jsx(ST, { open: n, children: /* @__PURE__ */ v.jsxs(Qv, { className: "p-0 h-[75vh] w-[75vw] max-h-none max-w-none", children: [
+    /* @__PURE__ */ v.jsx(ST, { open: n, onOpenChange: (o) => r(o), children: /* @__PURE__ */ v.jsxs(Qv, { container: i, className: "p-0 h-[75vh] w-[75vw] max-h-none max-w-none", children: [
       /* @__PURE__ */ v.jsxs(eb, { className: "pt-6 px-6", children: [
         /* @__PURE__ */ v.jsx(tb, { children: "Médiathèque" }),
         /* @__PURE__ */ v.jsx(nb, { children: "Sélectionnez ou ajoutez un nouveau média." })
@@ -22560,17 +22560,17 @@ const rb = yb(void 0), $u = () => {
     throw new Error("usePickerContext must be used within a MediaPickerAppProvider");
   return e;
 };
-function LT({ serverUrl: e, className: t, onPickedMedia: n }) {
-  const [r, i] = ei(!1), [o, a] = ei(!1), [s, c] = ei(null);
+function LT({ serverUrl: e, className: t, onPickedMedia: n, dialogContainer: r }) {
+  const [i, o] = ei(!1), [a, s] = ei(!1), [c, l] = ei(null);
   return t = $e("group bg-background w-96 m-6 aspect-[4/3]", t), gi(() => {
     (async () => {
       try {
-        await qh(e), i(!0);
-      } catch (u) {
-        console.error("Failed to initialize the app:", u);
+        await qh(e), o(!0);
+      } catch (d) {
+        console.error("Failed to initialize the app:", d);
       }
     })();
-  }, [e]), r ? /* @__PURE__ */ v.jsx(rb.Provider, { value: { onPickedMedia: n, isDialogOpen: o, setIsDialogOpen: a, selectedMedia: s, setSelectedMedia: c }, children: /* @__PURE__ */ v.jsx(Rp, { store: Hh, children: /* @__PURE__ */ v.jsx(OT, {}) }) }) : /* @__PURE__ */ v.jsx("div", { className: t, children: "Initialisation ..." });
+  }, [e]), i ? /* @__PURE__ */ v.jsx(rb.Provider, { value: { onPickedMedia: n, isDialogOpen: a, setIsDialogOpen: s, selectedMedia: c, setSelectedMedia: l, dialogContainer: r }, children: /* @__PURE__ */ v.jsx(Rp, { store: Hh, children: /* @__PURE__ */ v.jsx(OT, {}) }) }) : /* @__PURE__ */ v.jsx("div", { className: t, children: "Initialisation ..." });
 }
 function RT() {
   const e = yi(), t = gr((l) => l.media.view), n = gr((l) => l.main.picker), r = gr((l) => l.main.currentMedia);
