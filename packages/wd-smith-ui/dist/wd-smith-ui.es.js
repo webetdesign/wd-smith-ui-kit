@@ -22582,7 +22582,7 @@ function zT({ serverUrl: e, className: t, onPickedMedia: n, dialogContainer: r, 
       const h = await Bh(p);
       u(h);
     })(i);
-  }, [o, i]), o ? /* @__PURE__ */ v.jsx(ib.Provider, { value: { onPickedMedia: n, isDialogOpen: s, setIsDialogOpen: c, selectedMedia: l, setSelectedMedia: u, dialogContainer: r }, children: /* @__PURE__ */ v.jsx(Rp, { store: qh, children: /* @__PURE__ */ v.jsx(RT, {}) }) }) : /* @__PURE__ */ v.jsx("div", { className: t, children: "Initialisation ..." });
+  }, [o, i]), o ? /* @__PURE__ */ v.jsx(ib.Provider, { value: { onPickedMedia: n, isDialogOpen: s, setIsDialogOpen: c, selectedMedia: l, setSelectedMedia: u, dialogContainer: r }, children: /* @__PURE__ */ v.jsx(Rp, { store: qh, children: /* @__PURE__ */ v.jsx(RT, { className: t }) }) }) : /* @__PURE__ */ v.jsx("div", { className: t, children: "Initialisation ..." });
 }
 function kT() {
   const e = yi(), t = yr((l) => l.media.view), n = yr((l) => l.main.picker), r = yr((l) => l.main.currentMedia);

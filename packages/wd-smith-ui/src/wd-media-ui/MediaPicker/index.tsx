@@ -73,7 +73,7 @@ function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer, 
   return (
     <MediaPickerAppContext.Provider value={{ onPickedMedia, isDialogOpen, setIsDialogOpen, selectedMedia, setSelectedMedia, dialogContainer }}>
       <Provider store={store}>
-        <MediaPicker/>
+        <MediaPicker className={className}/>
       </Provider>
     </MediaPickerAppContext.Provider>
   )
