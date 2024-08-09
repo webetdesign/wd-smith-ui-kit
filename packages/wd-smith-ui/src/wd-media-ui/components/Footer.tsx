@@ -21,6 +21,7 @@ function Footer() {
         if (currentMedia !== null && currentMedia !== undefined) {
           onPickedMedia(currentMedia.id !== undefined ? currentMedia.id : null);
           setIsDialogOpen(false);
+          console.log('foo');
         }
       }
     }
