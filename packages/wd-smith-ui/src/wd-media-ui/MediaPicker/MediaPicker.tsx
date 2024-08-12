@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, useEffect} from "react";
+import React, {HTMLAttributes} from "react";
 import MediaLibrary from "@/wd-media-ui/MediaLibrary/MediaLibrary.tsx";
 
 import {
@@ -21,17 +21,14 @@ function MediaPicker({ className }: MediaPickerProps) {
   const dispatch = useDispatch<MediaLibraryDispatch>();
   dispatch(setPicker(true));
 
-  const { isDialogOpen, dialogContainer } = usePickerContext();
+  const { isDialogOpen, setIsDialogOpen, dialogContainer } = usePickerContext();
 
-  useEffect(() => {
-    console.log(isDialogOpen);
-  }, [isDialogOpen])
 
   return (
     <>
       <PickerMediaCard className={className}></PickerMediaCard>
 
-      <Dialog open={isDialogOpen}>
+      <Dialog open={isDialogOpen} onOpenChange={(value) => setIsDialogOpen(value)}>
         <DialogContent container={dialogContainer} className="p-0 z-[900] h-[75vh] w-[75vw] max-h-none max-w-none">
           <DialogHeader className="pt-6 px-6">
             <DialogTitle>Médiathèque</DialogTitle>
