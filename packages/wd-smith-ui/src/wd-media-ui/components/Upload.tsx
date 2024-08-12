@@ -19,7 +19,6 @@ function Upload() {
       for (const file of fileList) {
         await dispatch(createMedia({
           file,
-          category: 'default_cms',
         }));
 
         if (!fileRef.current) {

@@ -8,7 +8,6 @@ export interface UpdateMediaFileParams {
 }
 
 export interface CreateMediaParams {
-  category: string;
   file: File;
 }
 
@@ -81,7 +80,6 @@ export const createMedia = createAsyncThunk<Components.Schemas.Media, CreateMedi
   async (media: CreateMediaParams) => {
     const formData = new FormData();
     formData.append('file', media.file);
-    formData.append('category', media.category);
     const client = await ApiClient.getInstance();
     const mediaResponse = await client.postMedia(null, formData as Paths.PostMedia.RequestBody, {
       headers: {
