@@ -6,27 +6,58 @@ import React, {useEffect, useRef, useState} from "react";
 import {createMedia, fetchMediaItems} from "@/wd-media-ui/stores/slices/mediaSlice.ts";
 import {useDispatch} from "react-redux";
 import {MediaLibraryDispatch} from "@/wd-media-ui/stores";
+import {z, ZodError} from "zod";
+import {useToast} from "@/components/ui/use-toast"
+import {usePickerContext} from "@/wd-media-ui/MediaPicker/index.tsx"
 
 
 function Upload() {
+  const { toast } = useToast()
   const dispatch = useDispatch<MediaLibraryDispatch>();
   const [fileList, setFileList] = useState<FileList | null>(null);
 
   const fileRef: React.MutableRefObject<HTMLInputElement | null> = useRef(null);
 
+  let allowMimeType: string[] | null | undefined = null;
+  try {
+    const pickerContext = usePickerContext();
+    allowMimeType = pickerContext.allowMimeType;
+  } catch ( e ) {
+  }
+
+  const fileSchema = z.any()
+    .refine((file: File) => {
+      if (allowMimeType === null || allowMimeType === undefined) {
+        return true;
+      }
+      return allowMimeType.includes(file.type);
+    }, 'Type de fichier invalide !')
+
   useEffect(() => {
+    let uploaded = 0;
     const upload = async (fileList: FileList) => {
       for (const file of fileList) {
-        await dispatch(createMedia({
-          file,
-        }));
+        try {
+          fileSchema.parse(file);
+          await dispatch(createMedia({
+            file,
+          }));
+          uploaded++;
+        } catch ( error: ZodError | any ) {
+          toast({
+            variant: "destructive",
+            description: error.errors.map((message: any) => message.message).join(" | "),
+          })
+        }
 
         if (!fileRef.current) {
           return;
         }
         fileRef.current.value = '';
       }
-      dispatch(fetchMediaItems());
+      if (uploaded > 0) {
+        dispatch(fetchMediaItems());
+      }
     }
     if (fileList) {
       upload(fileList);
@@ -47,11 +78,11 @@ function Upload() {
       </Button>
 
       <Input className="hidden"
-        type="file"
-        ref={fileRef}
-        onChange={(event) => {
-          setFileList(event.target.files);
-        }}
+             type="file"
+             ref={fileRef}
+             onChange={(event) => {
+               setFileList(event.target.files);
+             }}
       />
     </>
   )

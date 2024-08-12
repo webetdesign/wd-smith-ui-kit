@@ -5,7 +5,6 @@ export interface UpdateMediaFileParams {
     file: File;
 }
 export interface CreateMediaParams {
-    category: string;
     file: File;
 }
 export interface MediaState {

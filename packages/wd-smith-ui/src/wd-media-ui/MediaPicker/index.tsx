@@ -4,7 +4,7 @@ import store, {initializeApp} from '@/wd-media-ui/stores';
 import {cn} from "@/lib/utils.ts";
 import MediaPicker from "@/wd-media-ui/MediaPicker/MediaPicker.tsx";
 import {Components} from "@/wd-media-ui/api/types/openapi";
-import { mediaItemQuery} from "@/wd-media-ui/stores/slices/mediaSlice.ts";
+import {mediaItemQuery} from "@/wd-media-ui/stores/slices/mediaSlice.ts";
 
 
 export interface MediaPickerProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
@@ -12,6 +12,7 @@ export interface MediaPickerProps extends React.HTMLProps<HTMLAttributes<HTMLDiv
   dialogContainer: HTMLElement
   onPickedMedia: (value: number | null) => void;
   value?: number | undefined;
+  allowMimeType?: string[] | null;
 }
 
 type MediaPickerAppContextType = {
@@ -21,6 +22,7 @@ type MediaPickerAppContextType = {
   setIsDialogOpen: (value: boolean) => void;
   selectedMedia: Components.Schemas.Media | null;
   setSelectedMedia: (value: Components.Schemas.Media | null) => void;
+  allowMimeType?: string[] | null;
 };
 export const MediaPickerAppContext = createContext<MediaPickerAppContextType | undefined>(undefined);
 
@@ -33,7 +35,7 @@ export const usePickerContext = () => {
 };
 
 
-function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer, value }: MediaPickerProps) {
+function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer, value, allowMimeType }: MediaPickerProps) {
   // Note : on peut pas dispatch dans ce composant
   const [initialized, setInitialized] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -71,7 +73,7 @@ function MediaPickerApp({ serverUrl, className, onPickedMedia, dialogContainer, 
   }
 
   return (
-    <MediaPickerAppContext.Provider value={{ onPickedMedia, isDialogOpen, setIsDialogOpen, selectedMedia, setSelectedMedia, dialogContainer }}>
+    <MediaPickerAppContext.Provider value={{ onPickedMedia, isDialogOpen, setIsDialogOpen, selectedMedia, setSelectedMedia, dialogContainer, allowMimeType }}>
       <Provider store={store}>
         <MediaPicker className={className}/>
       </Provider>

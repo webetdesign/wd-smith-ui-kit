@@ -1,6 +1,7 @@
 import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 import type {Components, Paths} from '@/wd-media-ui/api/types/openapi.d.ts';
 import ApiClient from '@/wd-media-ui/api/ApiClient.ts';
+import {showToast} from "@/wd-media-ui/services/toastService.ts";
 
 export interface UpdateMediaFileParams {
   id: number;
@@ -171,10 +172,11 @@ const mediaSlice = createSlice({
       })
       .addCase(createMedia.fulfilled, (state) => {
         state.updateStatus = 'succeeded';
+        showToast('Media ajouté')
       })
-      .addCase(createMedia.rejected, (state, action) => {
+      .addCase(createMedia.rejected, (state) => {
         state.updateStatus = 'failed';
-        state.updateError = action.error.message || 'Failed to create media item';
+        showToast('Une erreur est survenu pendant la création !' , 'destructive')
       });
   },
 });

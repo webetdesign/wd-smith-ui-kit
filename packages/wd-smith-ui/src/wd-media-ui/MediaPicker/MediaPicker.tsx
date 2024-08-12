@@ -13,6 +13,7 @@ import {MediaLibraryDispatch} from "@/wd-media-ui/stores";
 import {setPicker} from "@/wd-media-ui/stores/slices/mainSlice.ts";
 import PickerMediaCard from "@/wd-media-ui/components/PickerMediaCard.tsx";
 import {usePickerContext} from "@/wd-media-ui/MediaPicker/index.tsx";
+import {Toaster} from "@/components/ui/toaster.tsx";
 
 export interface MediaPickerProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
 }
@@ -38,6 +39,7 @@ function MediaPicker({ className }: MediaPickerProps) {
           </DialogHeader>
 
           <MediaLibrary className={`h-[calc(75vh-1.5rem-70px)]`}></MediaLibrary>
+          <Toaster />
         </DialogContent>
       </Dialog>
 

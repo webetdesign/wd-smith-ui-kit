@@ -3,6 +3,7 @@ import {Provider} from 'react-redux';
 import store, {initializeApp} from '@/wd-media-ui/stores';
 import {cn} from "@/lib/utils.ts";
 import MediaLibrary from "@/wd-media-ui/MediaLibrary/MediaLibrary.tsx";
+import {Toaster} from "@/components/ui/toaster.tsx";
 
 export interface MediaLibraryProps extends React.HTMLProps<HTMLAttributes<HTMLDivElement>> {
   serverUrl: string;
@@ -32,6 +33,7 @@ function MediaLibraryApp({ serverUrl, className }: MediaLibraryProps) {
   return (
     <Provider store={store}>
       <MediaLibrary></MediaLibrary>
+      <Toaster />
     </Provider>
   )
 }
