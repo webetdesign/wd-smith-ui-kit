@@ -22542,7 +22542,7 @@ function OT({ className: e }) {
   const { setIsDialogOpen: t, selectedMedia: n } = $u();
   return e = $e("group bg-background w-96 m-6 aspect-[4/3]", e), /* @__PURE__ */ v.jsx(Kl, { onClick: () => t(!0), className: e, children: /* @__PURE__ */ v.jsxs("div", { className: "relative", children: [
     /* @__PURE__ */ v.jsx(Om, { ratio: 4 / 3, className: "rounded-lg overflow-hidden bg-checkerboard", children: /* @__PURE__ */ v.jsx(Tm, { media: n, placeholder: !0 }) }),
-    /* @__PURE__ */ v.jsx("div", { className: "hidden absolute inset-6 flex items-center justify-center group-hover:flex rounded-lg bg-primary/25 text-white border-dashed border-2", children: /* @__PURE__ */ v.jsx(Pr, { icon: mg, className: "text-4xl" }) })
+    /* @__PURE__ */ v.jsx("div", { className: "hidden absolute inset-6 flex items-center justify-center group-hover:!flex rounded-lg bg-primary/25 text-white border-dashed border-2", children: /* @__PURE__ */ v.jsx(Pr, { icon: mg, className: "text-4xl" }) })
   ] }) });
 }
 function RT({ className: e }) {
