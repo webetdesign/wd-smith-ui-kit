@@ -7,6 +7,7 @@ declare const DialogClose: React.ForwardRefExoticComponent<DialogPrimitive.Dialo
 declare const DialogOverlay: React.ForwardRefExoticComponent<Omit<DialogPrimitive.DialogOverlayProps & React.RefAttributes<HTMLDivElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
 declare const DialogContent: React.ForwardRefExoticComponent<Omit<DialogPrimitive.DialogContentProps & React.RefAttributes<HTMLDivElement>, "ref"> & {
     container?: HTMLElement | null | undefined;
+    closeButton?: boolean | undefined;
 } & React.RefAttributes<HTMLDivElement>>;
 declare const DialogHeader: {
     ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>): import("react/jsx-runtime").JSX.Element;

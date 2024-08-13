@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Upload from "@/wd-media-ui/components/Upload.tsx";
+import SearchBar from "@/wd-media-ui/components/SearchBar.tsx";
 
 function Header() {
 
@@ -50,7 +51,8 @@ function Header() {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <div>
+        <div className="flex gap-3">
+          <SearchBar />
           <Upload/>
         </div>
       </div>

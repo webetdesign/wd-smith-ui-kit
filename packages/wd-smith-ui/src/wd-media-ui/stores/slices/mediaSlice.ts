@@ -2,6 +2,7 @@ import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
 import type {Components, Paths} from '@/wd-media-ui/api/types/openapi.d.ts';
 import ApiClient from '@/wd-media-ui/api/ApiClient.ts';
 import {showToast} from "@/wd-media-ui/services/toastService.ts";
+import type {Parameters} from "openapi-client-axios";
 
 export interface UpdateMediaFileParams {
   id: number;
@@ -32,9 +33,9 @@ const initialState: MediaState = {
 
 export const fetchMediaItems = createAsyncThunk(
   'fetch',
-  async (page: number | undefined) => {
+  async (params?: Parameters<Paths.GetMedias.QueryParameters> ) => {
     const client = await ApiClient.getInstance();
-    const mediaResponse = await client.getMedias({ page }, null, {
+    const mediaResponse = await client.getMedias(params, null, {
       headers: {
         'Accept': 'application/ld+json'
       }

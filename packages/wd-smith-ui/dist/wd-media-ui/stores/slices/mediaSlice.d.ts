@@ -1,4 +1,5 @@
 import { Components, Paths } from '../../api/types/openapi.d.ts';
+import { Parameters } from 'openapi-client-axios';
 
 export interface UpdateMediaFileParams {
     id: number;
@@ -15,7 +16,7 @@ export interface MediaState {
     updateStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
     updateError: string | null;
 }
-export declare const fetchMediaItems: import('@reduxjs/toolkit').AsyncThunk<Paths.GetMedias.Responses.$200, number | undefined, {
+export declare const fetchMediaItems: import('@reduxjs/toolkit').AsyncThunk<Paths.GetMedias.Responses.$200, Parameters<Paths.GetMedias.QueryParameters> | undefined, {
     state?: unknown;
     dispatch?: import('redux-thunk').ThunkDispatch<unknown, unknown, import('redux').UnknownAction> | undefined;
     extra?: unknown;

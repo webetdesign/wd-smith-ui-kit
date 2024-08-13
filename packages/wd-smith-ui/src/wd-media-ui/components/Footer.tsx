@@ -48,7 +48,7 @@ function Footer() {
     if (page === null) {
       return;
     }
-    dispatch(fetchMediaItems(page));
+    dispatch(fetchMediaItems({ page }));
   }
 
   return (

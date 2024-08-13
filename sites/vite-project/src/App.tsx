@@ -15,8 +15,13 @@ function App() {
 export default App
 
 function TestLibrary() {
+  const container = document.getElementById('dialog-root');
+  if (container === undefined || container === null) {
+    throw new Error('dialog-root element is undefined');
+  }
+
   return (
-    <MediaLibraryApp className="media-app-root" serverUrl="https://local.smith.fr"/>
+    <MediaLibraryApp dialogContainer={container} className="media-app-root" serverUrl="https://local.smith.fr"/>
   )
 }
 

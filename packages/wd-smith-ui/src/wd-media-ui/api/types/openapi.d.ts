@@ -14,7 +14,7 @@ declare namespace Components {
         export interface Media {
             id?: number;
             label?: string;
-            category?: string;
+            category?: string | null;
             categoryLabel?: string | null;
             fileName?: string | null;
             file?: string | null; // binary
@@ -45,7 +45,7 @@ declare namespace Components {
             "@type"?: string;
             id?: number;
             label?: string;
-            category?: string;
+            category?: string | null;
             categoryLabel?: string | null;
             fileName?: string | null;
             file?: string | null; // binary
@@ -76,7 +76,7 @@ declare namespace Components {
             "@type"?: string;
             id?: number;
             label?: string;
-            category?: string;
+            category?: string | null;
             categoryLabel?: string | null;
             fileName?: string | null;
             mimeType?: string;
@@ -98,7 +98,7 @@ declare namespace Components {
         export interface MediaRead {
             id?: number;
             label?: string;
-            category?: string;
+            category?: string | null;
             categoryLabel?: string | null;
             fileName?: string | null;
             mimeType?: string;
@@ -146,10 +146,12 @@ declare namespace Paths {
     }
     namespace GetMedias {
         namespace Parameters {
+            export type Label = string;
             export type Page = number;
         }
         export interface QueryParameters {
             page?: Parameters.Page;
+            label?: Parameters.Label;
         }
         namespace Responses {
             export interface $200 {
@@ -226,7 +228,6 @@ declare namespace Paths {
     }
     namespace PostMedia {
         export interface RequestBody {
-            category?: string;
             file?: string; // binary
         }
         namespace Responses {
