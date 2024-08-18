@@ -5,5 +5,6 @@ interface ImageCardProps {
     media: Components.Schemas.Media;
     key?: number | undefined;
 }
-declare function GalleryMediaCard({ className, media }: ImageCardProps): import("react/jsx-runtime").JSX.Element;
+declare function GalleryMediaCard({ media }: ImageCardProps): import("react/jsx-runtime").JSX.Element;
+export declare function GallerySkeletonCard(): import("react/jsx-runtime").JSX.Element;
 export default GalleryMediaCard;

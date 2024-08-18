@@ -67,6 +67,7 @@ export declare const createMedia: import('@reduxjs/toolkit').AsyncThunk<Componen
     fulfilledMeta?: unknown;
     rejectedMeta?: unknown;
 }>;
+export declare const mediaInitialState: MediaState;
 export declare const addItem: import('@reduxjs/toolkit').ActionCreatorWithPayload<Components.Schemas.Media, "media/addItem">, removeItem: import('@reduxjs/toolkit').ActionCreatorWithPayload<number, "media/removeItem">, setLoading: import('@reduxjs/toolkit').ActionCreatorWithoutPayload<"media/setLoading">, setSucceeded: import('@reduxjs/toolkit').ActionCreatorWithoutPayload<"media/setSucceeded">, setFailed: import('@reduxjs/toolkit').ActionCreatorWithPayload<string, "media/setFailed">;
 declare const _default: import('redux').Reducer<MediaState>;
 export default _default;

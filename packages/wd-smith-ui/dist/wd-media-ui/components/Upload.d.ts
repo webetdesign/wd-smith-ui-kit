@@ -1,2 +1,4 @@
-declare function Upload(): import("react/jsx-runtime").JSX.Element;
+declare function Upload({ title }: {
+    title?: string;
+}): import("react/jsx-runtime").JSX.Element;
 export default Upload;

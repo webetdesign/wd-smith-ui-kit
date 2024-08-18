@@ -11,7 +11,7 @@ import {useToast} from "@/components/ui/use-toast"
 import {usePickerContext} from "@/wd-media-ui/MediaPicker/index.tsx"
 
 
-function Upload() {
+function Upload({ title }: { title?: string }) {
   const { toast } = useToast()
   const dispatch = useDispatch<MediaLibraryDispatch>();
   const [fileList, setFileList] = useState<FileList | null>(null);
@@ -75,6 +75,7 @@ function Upload() {
     <>
       <Button type="button" onClick={handleUploadClick}>
         <FontAwesomeIcon icon={faUpload}/>
+        {title !== undefined && (<span className="ml-2"> {title}</span>)}
       </Button>
 
       <Input className="hidden"

@@ -72,6 +72,19 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundColor: {
+        'checkerboard': '#fff',  // Pour définir la couleur de fond
+      },
+      backgroundImage: {
+        'checkerboard': `linear-gradient(45deg, #f5f5f5 25%, transparent 25%, transparent 75%, #f5f5f5 75%),
+                         linear-gradient(45deg, #f5f5f5 25%, transparent 25%, transparent 75%, #f5f5f5 75%)`,  // Pour définir l'image de fond en motif checkerboard
+      },
+      backgroundSize: {
+        'checkerboard-size': '30px 30px',  // Pour définir la taille du motif
+      },
+      backgroundPosition: {
+        'checkerboard-position': '0 0, 15px 15px',  // Pour définir la position du motif
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

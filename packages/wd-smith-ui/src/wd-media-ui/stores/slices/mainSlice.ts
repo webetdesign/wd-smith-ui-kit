@@ -25,6 +25,7 @@ const mainSlice = createSlice({
   }
 });
 
+export const mainInitialState = initialState;
 export const {
                setCurrentMedia,
                setPicker,

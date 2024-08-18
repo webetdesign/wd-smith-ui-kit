@@ -6,7 +6,7 @@ declare const Command: React.ForwardRefExoticComponent<Omit<{
     ref?: React.Ref<HTMLDivElement> | undefined;
 } & {
     asChild?: boolean | undefined;
-}, "asChild" | "key" | keyof React.HTMLAttributes<HTMLDivElement>> & {
+}, "key" | "asChild" | keyof React.HTMLAttributes<HTMLDivElement>> & {
     label?: string | undefined;
     shouldFilter?: boolean | undefined;
     filter?: ((value: string, search: string, keywords?: string[] | undefined) => number) | undefined;
@@ -19,12 +19,12 @@ declare const Command: React.ForwardRefExoticComponent<Omit<{
 } & React.RefAttributes<HTMLDivElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
 interface CommandDialogProps extends DialogProps {
 }
-declare const CommandDialog: ({ children, container, ...props }: CommandDialogProps) => import("react/jsx-runtime").JSX.Element;
+declare const CommandDialog: ({ children, ...props }: CommandDialogProps) => import("react/jsx-runtime").JSX.Element;
 declare const CommandInput: React.ForwardRefExoticComponent<Omit<Omit<Pick<Pick<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, "key" | keyof React.InputHTMLAttributes<HTMLInputElement>> & {
     ref?: React.Ref<HTMLInputElement> | undefined;
 } & {
     asChild?: boolean | undefined;
-}, "asChild" | "key" | keyof React.InputHTMLAttributes<HTMLInputElement>>, "value" | "type" | "onChange"> & {
+}, "key" | "asChild" | keyof React.InputHTMLAttributes<HTMLInputElement>>, "type" | "onChange" | "value"> & {
     value?: string | undefined;
     onValueChange?: ((search: string) => void) | undefined;
 } & React.RefAttributes<HTMLInputElement>, "ref"> & React.RefAttributes<HTMLInputElement>>;
@@ -34,7 +34,7 @@ declare const CommandList: React.ForwardRefExoticComponent<Omit<{
     ref?: React.Ref<HTMLDivElement> | undefined;
 } & {
     asChild?: boolean | undefined;
-}, "asChild" | "key" | keyof React.HTMLAttributes<HTMLDivElement>> & {
+}, "key" | "asChild" | keyof React.HTMLAttributes<HTMLDivElement>> & {
     label?: string | undefined;
 } & React.RefAttributes<HTMLDivElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
 declare const CommandEmpty: React.ForwardRefExoticComponent<Omit<{
@@ -43,14 +43,14 @@ declare const CommandEmpty: React.ForwardRefExoticComponent<Omit<{
     ref?: React.Ref<HTMLDivElement> | undefined;
 } & {
     asChild?: boolean | undefined;
-}, "asChild" | "key" | keyof React.HTMLAttributes<HTMLDivElement>> & React.RefAttributes<HTMLDivElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
+}, "key" | "asChild" | keyof React.HTMLAttributes<HTMLDivElement>> & React.RefAttributes<HTMLDivElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
 declare const CommandGroup: React.ForwardRefExoticComponent<Omit<{
     children?: React.ReactNode;
 } & Omit<Pick<Pick<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React.HTMLAttributes<HTMLDivElement>> & {
     ref?: React.Ref<HTMLDivElement> | undefined;
 } & {
     asChild?: boolean | undefined;
-}, "asChild" | "key" | keyof React.HTMLAttributes<HTMLDivElement>>, "value" | "heading"> & {
+}, "key" | "asChild" | keyof React.HTMLAttributes<HTMLDivElement>>, "value" | "heading"> & {
     heading?: React.ReactNode;
     value?: string | undefined;
     forceMount?: boolean | undefined;
@@ -59,7 +59,7 @@ declare const CommandSeparator: React.ForwardRefExoticComponent<Omit<Pick<Pick<R
     ref?: React.Ref<HTMLDivElement> | undefined;
 } & {
     asChild?: boolean | undefined;
-}, "asChild" | "key" | keyof React.HTMLAttributes<HTMLDivElement>> & {
+}, "key" | "asChild" | keyof React.HTMLAttributes<HTMLDivElement>> & {
     alwaysRender?: boolean | undefined;
 } & React.RefAttributes<HTMLDivElement>, "ref"> & React.RefAttributes<HTMLDivElement>>;
 declare const CommandItem: React.ForwardRefExoticComponent<Omit<{
@@ -68,7 +68,7 @@ declare const CommandItem: React.ForwardRefExoticComponent<Omit<{
     ref?: React.Ref<HTMLDivElement> | undefined;
 } & {
     asChild?: boolean | undefined;
-}, "asChild" | "key" | keyof React.HTMLAttributes<HTMLDivElement>>, "value" | "disabled" | "onSelect"> & {
+}, "key" | "asChild" | keyof React.HTMLAttributes<HTMLDivElement>>, "onSelect" | "disabled" | "value"> & {
     disabled?: boolean | undefined;
     onSelect?: ((value: string) => void) | undefined;
     value?: string | undefined;

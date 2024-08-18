@@ -45,7 +45,7 @@ function Information() {
   const dispatch = useDispatch<MediaLibraryDispatch>();
   const form = useForm<FormData>({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: 'all',
     defaultValues: {
       label: media.label,
       alt: media.alt === undefined ? '' : String(media.alt),

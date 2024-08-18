@@ -39,11 +39,41 @@ export function isNotEmpty(value: any): boolean {
   return true;
 }
 
-export function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = error => reject(error);
-  });
+export function isObject(item: any): boolean {
+  return item && typeof item === 'object' && !Array.isArray(item);
+}
+
+export function deepMerge<T>(target: T, source: Partial<T>): T {
+  // Si le source n'est pas un objet, retourne directement le source
+  if (!isObject(source)) {
+    return source as T;
+  }
+
+  const output = { ...target } as any;
+
+  for (const key in source) {
+    if (source.hasOwnProperty(key)) {
+      const targetValue = target[key];
+      const sourceValue = source[key];
+
+      if (isObject(sourceValue)) {
+        if (!target[key]) {
+          output[key] = sourceValue;
+        } else {
+          output[key] = deepMerge(
+            targetValue as Record<string, unknown>,
+            sourceValue as Record<string, unknown>
+          );
+        }
+      } else if (Array.isArray(sourceValue)) {
+        output[key] = Array.isArray(targetValue)
+          ? [...targetValue, ...sourceValue]
+          : sourceValue;
+      } else {
+        output[key] = sourceValue;
+      }
+    }
+  }
+
+  return output;
 }

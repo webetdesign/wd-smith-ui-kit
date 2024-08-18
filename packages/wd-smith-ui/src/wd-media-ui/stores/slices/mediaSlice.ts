@@ -181,5 +181,7 @@ const mediaSlice = createSlice({
       });
   },
 });
+
+export const mediaInitialState = initialState;
 export const { addItem, removeItem, setLoading, setSucceeded, setFailed } = mediaSlice.actions;
 export default mediaSlice.reducer;

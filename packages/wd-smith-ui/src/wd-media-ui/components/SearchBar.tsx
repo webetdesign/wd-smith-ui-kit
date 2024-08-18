@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
-import {useLibraryContext} from "@/wd-media-ui/MediaLibrary";
+import {useLibraryContext} from "@/wd-media-ui/MediaLibrary/MediaLibrary.tsx";
 import {useDispatch} from "react-redux";
 import {MediaLibraryDispatch} from "@/wd-media-ui/stores";
 import {fetchMediaItems} from "@/wd-media-ui/stores/slices/mediaSlice.ts";

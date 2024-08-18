@@ -38,7 +38,7 @@ function MediaPicker({ className }: MediaPickerProps) {
             </DialogDescription>
           </DialogHeader>
 
-          <MediaLibrary className={`h-[calc(75vh-1.5rem-70px)]`}></MediaLibrary>
+          <MediaLibrary dialogContainer={dialogContainer} className={`h-[calc(75vh-1.5rem-70px)]`}></MediaLibrary>
           <Toaster />
         </DialogContent>
       </Dialog>

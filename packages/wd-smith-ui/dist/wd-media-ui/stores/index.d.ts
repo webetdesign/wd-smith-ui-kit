@@ -1,10 +1,16 @@
+import { MediaState } from './slices/mediaSlice';
+import { MainState } from './slices/mainSlice';
+import { FolderState } from './slices/folderSlice';
+
 declare const store: import('@reduxjs/toolkit').EnhancedStore<{
-    main: import('./slices/mainSlice').MainState;
-    media: import('./slices/mediaSlice').MediaState;
+    main: MainState;
+    media: MediaState;
+    folder: FolderState;
 }, import('redux').UnknownAction, import('@reduxjs/toolkit').Tuple<[import('redux').StoreEnhancer<{
     dispatch: import('redux-thunk').ThunkDispatch<{
-        main: import('./slices/mainSlice').MainState;
-        media: import('./slices/mediaSlice').MediaState;
+        main: MainState;
+        media: MediaState;
+        folder: FolderState;
     }, undefined, import('redux').UnknownAction>;
 }>, import('redux').StoreEnhancer]>>;
 export declare const initializeApp: (serveurUrl: string) => Promise<void>;
