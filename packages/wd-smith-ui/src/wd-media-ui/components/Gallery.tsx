@@ -25,7 +25,7 @@ function Gallery() {
 
   useEffect(() => {
     if (folderState.currentFolder) {
-      if (folderState.currentFolder.id !== -1) {
+      if (folderState.currentFolder.id === -1) {
         dispatch(fetchMediaItems({
           // createdAt: ,
         }));

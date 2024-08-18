@@ -19579,7 +19579,7 @@ function Xw() {
   var o;
   const e = Q2(), { items: t, status: n, error: r } = Z2((a) => a.media), i = Z2((a) => a.folder);
   return a0(() => {
-    i.currentFolder && (i.currentFolder.id !== -1 ? e(it({
+    i.currentFolder && (i.currentFolder.id === -1 ? e(it({
       // createdAt: ,
     })) : e(it({ folder: [String(i.currentFolder.id)] })));
   }, [i.currentFolder]), n === "loading" || n === "idle" ? /* @__PURE__ */ h.jsx("div", { className: "p-3 h-[calc(100%-10rem)] overflow-y-auto", children: /* @__PURE__ */ h.jsx("div", { className: "grid grid-cols-[repeat(auto-fit,minmax(200px,2fr))] gap-2", children: [...Array.from(Array(30).keys())].map((a) => /* @__PURE__ */ h.jsx(Lg, {}, a)) }) }) : n === "failed" ? /* @__PURE__ */ h.jsx("div", { className: "p-3", children: /* @__PURE__ */ h.jsxs(M4, { variant: "destructive", children: [
