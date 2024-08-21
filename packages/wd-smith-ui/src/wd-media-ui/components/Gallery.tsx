@@ -7,11 +7,15 @@ import {Components} from "@/wd-media-ui/api/types/openapi";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
 import {AlertCircle} from "lucide-react";
 import Upload from "@/wd-media-ui/components/Upload.tsx";
+import {ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuPortal, ContextMenuSeparator, ContextMenuTrigger} from "@/components/ui/context-menu.tsx";
+import {useLibraryContext} from "@/wd-media-ui/MediaLibrary/MediaLibrary.tsx";
+import {setCurrentMedia} from "@/wd-media-ui/stores/slices/mainSlice.ts";
 
 function Gallery() {
   const dispatch = useDispatch<MediaLibraryDispatch>();
   const { items, status, error } = useSelector((state: MediaLibraryState) => state.media);
   const folderState = useSelector((state: MediaLibraryState) => state.folder);
+  const { dialogContainer } = useLibraryContext()
 
 
   // useEffect(() => {
@@ -76,8 +80,40 @@ function Gallery() {
   return (
     <div className="p-3 h-[calc(100%-10rem)] overflow-y-auto">
       <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,2fr))] gap-2">
-        {items.length > 0 && items.map((media: Components.Schemas.Media) =>
-          <GalleryMediaCard key={media.id} media={media}></GalleryMediaCard>
+        {items.length > 0 && items.map((media: Components.Schemas.Media) => (
+            <ContextMenu key={media.id}>
+              <ContextMenuTrigger>
+                <GalleryMediaCard media={media}></GalleryMediaCard>
+              </ContextMenuTrigger>
+              <ContextMenuPortal container={dialogContainer}>
+                <ContextMenuContent>
+                  <ContextMenuItem onClick={() => {
+                  }}>
+                    Aperçu
+                  </ContextMenuItem>
+                  <ContextMenuSeparator></ContextMenuSeparator>
+                  <ContextMenuItem onClick={() => {
+                  }}>
+                    Déplacer
+                  </ContextMenuItem>
+                  <ContextMenuItem onClick={() => {
+                    dispatch(setCurrentMedia(media));
+                  }}>
+                    Modifier
+                  </ContextMenuItem>
+                  <ContextMenuSeparator></ContextMenuSeparator>
+                  <ContextMenuItem
+                    className="focus:bg-destructive focus:text-destructive-foreground"
+                    onClick={() => {
+                      // dispatch(deleteFolder(node.id))
+                    }}
+                  >
+                    Supprimer
+                  </ContextMenuItem>
+                </ContextMenuContent>
+              </ContextMenuPortal>
+            </ContextMenu>
+          )
         )}
       </div>
     </div>

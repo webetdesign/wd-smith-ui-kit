@@ -36,7 +36,7 @@ function Layout() {
         onCollapse={() => setMenuIsCollapsed(true)}
         onExpand={() => setMenuIsCollapsed(false)}
         data-collapsed={menuIsCollapsed}
-        className="group/collapse"
+        className="group/collapse border-t-2"
       >
         <Menu/>
       </ResizablePanel>
