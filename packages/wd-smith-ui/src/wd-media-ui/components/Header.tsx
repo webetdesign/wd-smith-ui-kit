@@ -11,6 +11,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {MediaLibraryDispatch, MediaLibraryState} from "@/wd-media-ui/stores";
 import {Folder, setCurrentFolder} from "@/wd-media-ui/stores/slices/folderSlice.ts";
 import React from "react";
+import {Button} from "@/components/ui/button.tsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUpload} from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
   const dispatch = useDispatch<MediaLibraryDispatch>();
@@ -42,13 +45,13 @@ function Header() {
               <React.Fragment key={node.id}>
                 {index !== 0 && <BreadcrumbSeparator/>}
                 <BreadcrumbItem>
-                  {nodes.length -1 !== index && (
+                  {nodes.length - 1 !== index && (
                     <BreadcrumbLink className="cursor-pointer" onClick={() => {
                       dispatch(setCurrentFolder(node))
                     }}
                     >{node.label}</BreadcrumbLink>
                   )}
-                  {nodes.length -1 === index && (
+                  {nodes.length - 1 === index && (
                     <BreadcrumbPage>{node.label}</BreadcrumbPage>
                   )}
                 </BreadcrumbItem>
@@ -59,7 +62,11 @@ function Header() {
 
         <div className="flex gap-3">
           <SearchBar/>
-          <Upload/>
+          <Upload>
+            <Button type="button">
+              <FontAwesomeIcon icon={faUpload}/>
+            </Button>
+          </Upload>
         </div>
       </div>
     </div>

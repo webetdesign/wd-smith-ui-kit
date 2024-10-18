@@ -69,7 +69,7 @@ function Gallery() {
         <div className="h-full flex justify-center content-center items-center text-2xl">
           <div className="p-6 border-2 border-dashed border-secondary rounded-xl flex flex-col gap-3">
             Le dossier {folderState.currentFolder?.label} ne contient aucun média.
-            <Upload title="Ajouter un media"/>
+            <Upload/>
           </div>
         </div>
       </div>

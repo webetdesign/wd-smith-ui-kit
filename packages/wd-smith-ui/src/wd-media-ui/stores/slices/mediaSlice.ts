@@ -123,6 +123,7 @@ const mediaSlice = createSlice({
         state.status = 'succeeded';
         state.items = action.payload['hydra:member'];
         state.view = action.payload['hydra:view'];
+        console.log(action.meta.arg);
       })
       .addCase(fetchMediaItems.rejected, (state, action) => {
         state.status = 'failed';

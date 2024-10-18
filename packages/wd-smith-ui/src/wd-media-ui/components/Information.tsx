@@ -4,8 +4,8 @@ import {Button} from "@/components/ui/button.tsx";
 import {setCurrentMedia} from "@/wd-media-ui/stores/slices/mainSlice.ts";
 import {updateMedia, updateMediaFile, UpdateMediaFileParams} from "@/wd-media-ui/stores/slices/mediaSlice.ts";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTimes} from '@fortawesome/free-solid-svg-icons';
-import {dateFormat, isNotEmpty} from "@/lib/utils.ts";
+import {faTimes, faUpload} from '@fortawesome/free-solid-svg-icons';
+import {cn, dateFormat, isNotEmpty} from "@/lib/utils.ts";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
@@ -22,6 +22,9 @@ import {Input} from "@/components/ui/input"
 import {Textarea} from "@/components/ui/textarea"
 import {Components} from "@/wd-media-ui/api/types/openapi";
 import {useEffect} from "react";
+import {AspectRatio} from "@/components/ui/aspect-ratio.tsx";
+import Media from "@/wd-media-ui/components/Media.tsx";
+import Upload from "@/wd-media-ui/components/Upload.tsx";
 
 const schema = z.object({
   label: z.string().min(1, "Ce champs ne doit pas être vide"),
@@ -53,8 +56,6 @@ function Information() {
       file: null
     }
   });
-
-  const fileRef = form.register("file");
 
   useEffect(() => {
     if (media) {
@@ -112,14 +113,18 @@ function Information() {
         </div>
       </div>
       <div className="px-6 pb-6 h-[calc(100%-5rem)] overflow-y-auto">
-        <div className="my-3 bg-checkerboard flex justify-center">
-          {media.picture && (
-            <img src={String(media.thumbnail)} alt={String(media.alt)} className=""/>
-          )}
-          {media.svg && (
-            <img src={String(media.reference)} alt={String(media.alt)} className=""/>
-          )}
-        </div>
+        <Upload media={media}>
+          <div className="group bg-background mt-3 cursor-pointer">
+            <div className="relative">
+              <AspectRatio ratio={4 / 3} className={cn('rounded-lg overflow-hidden', { 'bg-checkerboard': media.thumbnail !== undefined || media.svg })}>
+                <Media media={media}></Media>
+              </AspectRatio>
+              <div className="hidden absolute inset-6 flex items-center justify-center group-hover:!flex rounded-lg bg-primary/25 text-white border-dashed border-2">
+                <FontAwesomeIcon icon={faUpload} className="text-4xl"/>
+              </div>
+            </div>
+          </div>
+        </Upload>
         <div className="my-3">
           <div className="mb-2 border-b-2 flex justify-between">
             <div className="flex justify-start">Created at</div>
@@ -142,25 +147,6 @@ function Information() {
         <div className="max-w-md mx-auto mt-10">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-
-              <FormField
-                name="file"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Fichier</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="file"
-                        {...fileRef}
-                        onChange={(event) => {
-                          field.onChange(event.target?.files?.[0] ?? null);
-                        }}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
 
               <FormField
                 control={form.control}
